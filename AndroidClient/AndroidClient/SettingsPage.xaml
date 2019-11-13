@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="xMetronomeClient.SettingsPage"
+             Title="Settings">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Default BPM"
+                VerticalOptions="Start" 
+                HorizontalOptions="StartAndExpand" />
+
+            <Label Text="{Binding Bpm, StringFormat='{0} BPM'}"
+                   VerticalOptions="Start" 
+                   HorizontalOptions="StartAndExpand" />
+
+            <Stepper Value="{Binding Bpm}" Increment="10" Minimum="60" Maximum="200"></Stepper>
+
+
+            <Label Text="Default BeatPerBar"
+                VerticalOptions="Start" 
+                HorizontalOptions="StartAndExpand" />
+
+            <Label Text="{Binding BeatPerBar}"
+                   VerticalOptions="Start" 
+                   HorizontalOptions="StartAndExpand" />
+            
+            <Stepper Value="{Binding BeatPerBar}" Increment="1" Minimum="1" Maximum="12"></Stepper>
+
+
+            <Label Text="Default HighSoundFrequency (Hz)"
+                VerticalOptions="Start" 
+                HorizontalOptions="StartAndExpand" />
+
+            <Entry VerticalOptions="Start" 
+                   HorizontalOptions="StartAndExpand"
+                   Keyboard="Numeric" Text="{Binding HighSoundFreq}" />
+
+            <Label Text="Default LowSoundFrequency (Hz)"
+                VerticalOptions="Start" 
+                HorizontalOptions="StartAndExpand" />
+
+            <Entry VerticalOptions="Start" 
+                   HorizontalOptions="StartAndExpand"
+                   Keyboard="Numeric" Text="{Binding LowSoundFreq}" />
+
+
+            <Button Text="Save" Command="{Binding SaveSettingsCommand}"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AndroidClient"
+             x:Class="AndroidClient.MainPage"
+             x:Name="Page"
+             Title="xMetronome">
+
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Settings" Order="Secondary" Priority="0" Clicked="OnShowSettingsAsync" />
+        <ToolbarItem Name="About" Order="Secondary" Priority="1" Clicked="OnShowAboutPageAsync" />
+    </ContentPage.ToolbarItems>
+    
+    <StackLayout Spacing="10">
+        <Image
+            Source="metronome_pix"
+            Aspect="AspectFill"
+            HorizontalOptions="Center" />
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+
+            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                FontSize="Large"
+                Text="{Binding CurrentBpm, StringFormat='{0} BPM'}"
+                HorizontalOptions="Center" />
+
+            <Stepper 
+                Grid.Row="1" 
+                Grid.Column="0" 
+                HorizontalOptions="Start" 
+                Value="{Binding CurrentBpm}" 
+                Increment="1" Maximum="200" Minimum="60"/>
+
+            <Stepper 
+                Grid.Row="1" 
+                Grid.Column="1" 
+                HorizontalOptions="End" 
+                Value="{Binding CurrentBpm}" 
+                Increment="10" Maximum="200" Minimum="60"/>
+
+
+            <Label Text="Accent" Grid.Row="3" HorizontalTextAlignment="Center"
+                   FontSize="Medium" Grid.Column="0" />
+
+            <Label Text="{Binding CurrentBeatPerBar}"
+                   Grid.Row="4"
+                   HorizontalTextAlignment="Center"
+                   FontSize="Large" Grid.Column="0" />
+
+            <Button Text="{Binding StartButtonText}" FontSize="Large"
+                    Grid.Row="3" Grid.Column="1" Grid.RowSpan="3" Command="{Binding StartStopAsyncCommand}" />
+
+            <Stepper Value="{Binding CurrentBeatPerBar}"
+                     Grid.Row="5"
+                     Grid.Column="0" Maximum="12"
+                     Increment="1"
+                     HorizontalOptions="Center" />
+
+        </Grid>
+    </StackLayout>
+
+</ContentPage>
