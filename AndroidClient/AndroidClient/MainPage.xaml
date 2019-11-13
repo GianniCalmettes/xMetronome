@@ -12,15 +12,11 @@
         <ToolbarItem Name="Settings" Order="Secondary" Priority="0" Clicked="OnShowSettingsAsync" />
         <ToolbarItem Name="About" Order="Secondary" Priority="1" Clicked="OnShowAboutPageAsync" />
     </ContentPage.ToolbarItems>
-    
-    <StackLayout Spacing="10">
-        <Image
-            Source="metronome_pix"
-            Aspect="AspectFill"
-            HorizontalOptions="Center" />
 
+    <StackLayout Spacing="10">
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
@@ -35,40 +31,45 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-
-            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
-                FontSize="Large"
-                Text="{Binding CurrentBpm, StringFormat='{0} BPM'}"
-                HorizontalOptions="Center" />
-
-            <Stepper 
-                Grid.Row="1" 
+            <Label 
+                Grid.Row="0" 
                 Grid.Column="0" 
-                HorizontalOptions="Start" 
-                Value="{Binding CurrentBpm}" 
-                Increment="1" Maximum="200" Minimum="60"/>
+                Grid.ColumnSpan="2"
+                Grid.RowSpan="2"
+                FontSize="Title"
+                Text="Beat Per Minute"
+                HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
 
-            <Stepper 
+            <Entry 
+                Keyboard="Numeric"
                 Grid.Row="1" 
-                Grid.Column="1" 
-                HorizontalOptions="End" 
-                Value="{Binding CurrentBpm}" 
-                Increment="10" Maximum="200" Minimum="60"/>
+                Grid.ColumnSpan="2"
+                Grid.RowSpan="3"
+                FontSize="Large" 
+                Text="{Binding CurrentBpm}" 
+                HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
 
+            <Slider 
+                Grid.ColumnSpan="2"
+                Grid.Row="3"
+                Grid.RowSpan="2"
+                Value="{Binding CurrentBpm, Mode=TwoWay}"
+                Maximum="200"
+                Minimum="60" />
 
-            <Label Text="Accent" Grid.Row="3" HorizontalTextAlignment="Center"
+            <Label Text="Accent" Grid.Row="6" HorizontalTextAlignment="Center"
                    FontSize="Medium" Grid.Column="0" />
 
             <Label Text="{Binding CurrentBeatPerBar}"
-                   Grid.Row="4"
+                   Grid.Row="7"
                    HorizontalTextAlignment="Center"
                    FontSize="Large" Grid.Column="0" />
 
             <Button Text="{Binding StartButtonText}" FontSize="Large"
-                    Grid.Row="3" Grid.Column="1" Grid.RowSpan="3" Command="{Binding StartStopAsyncCommand}" />
+                    Grid.Row="6" Grid.Column="1" Grid.RowSpan="3" Command="{Binding StartStopAsyncCommand}" />
 
             <Stepper Value="{Binding CurrentBeatPerBar}"
-                     Grid.Row="5"
+                     Grid.Row="8"
                      Grid.Column="0" Maximum="12"
                      Increment="1"
                      HorizontalOptions="Center" />
