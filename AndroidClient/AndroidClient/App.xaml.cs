@@ -25,7 +25,7 @@ namespace AndroidClient
                 InitializeComponent();
 
                 MainPage = new NavigationPage(
-                    new MainPage(Container.Resolve<MainPageViewModel>(), Container.Resolve<SettingsPageViewModel>())
+                    new MainPage(Container.Resolve<MainPageViewModel>(), Container.Resolve<SettingsPageViewModel>(), Container.Resolve<AboutPageViewModel>())
                 );
 
             }
@@ -60,6 +60,7 @@ namespace AndroidClient
 
             containerBuilder.RegisterType<MainPageViewModel>();
             containerBuilder.RegisterType<SettingsPageViewModel>();
+            containerBuilder.RegisterType<AboutPageViewModel>();
 
             return containerBuilder.Build();
         }

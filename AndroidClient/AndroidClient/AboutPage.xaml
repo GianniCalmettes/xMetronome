@@ -9,9 +9,18 @@
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
 
-            <Label Text="GitHub: Coming soon..."
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="GitHub" TextColor="Blue" TextDecorations="Underline">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenBrowserCommand}" CommandParameter="https://github.com/GianniCalmettes/xMetronome"/>
+                            </Span.GestureRecognizers>
+                        </Span>
+                    </FormattedString>    
+                </Label.FormattedText>
+                
+            </Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
